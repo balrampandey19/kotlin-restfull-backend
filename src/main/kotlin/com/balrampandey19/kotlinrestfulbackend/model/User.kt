@@ -1,4 +1,4 @@
-package com.balrampandey19.kotlinrestfulbackend.repository
+package com.balrampandey19.kotlinrestfulbackend.model
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
