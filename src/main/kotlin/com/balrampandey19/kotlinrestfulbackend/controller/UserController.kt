@@ -2,9 +2,8 @@ package com.balrampandey19.kotlinrestfulbackend.controller
 
 import com.balrampandey19.kotlinrestfulbackend.model.User
 import com.balrampandey19.kotlinrestfulbackend.repository.UserRepository
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 
 @RestController
@@ -12,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(private val userRepository: UserRepository) {
 
 
-    @GetMapping("/articles")
+    @GetMapping("/user")
     fun getAllUser(): List<User> =
             userRepository.findAll()
+
+    @PostMapping("/user")
+    fun createNewArticle(@Valid @RequestBody article: User): User =
+            userRepository.save(article)
 }
