@@ -21,7 +21,7 @@ class UserController(private val userRepository: UserRepository) {
             userRepository.save(user)
 
     @GetMapping("/user/{id}")
-    fun getUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<Article> {
+    fun getUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<User> {
         return userRepository.findById(userId).map { user ->
             ResponseEntity.ok(user)
         }.orElse(ResponseEntity.notFound().build())
