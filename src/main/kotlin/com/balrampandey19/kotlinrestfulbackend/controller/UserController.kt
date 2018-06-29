@@ -17,7 +17,7 @@ class UserController(private val userRepository: UserRepository) {
             userRepository.findAll()
 
     @PostMapping("/user")
-    fun createNewArticle(@Valid @RequestBody user: User): User =
+    fun createNewUser(@Valid @RequestBody user: User): User =
             userRepository.save(user)
 
     @GetMapping("/user/{id}")
