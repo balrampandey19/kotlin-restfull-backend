@@ -1,2 +1,2 @@
-# kotlin-restfull-backend
-Restful api (Backend) with Kotlin, Spring Boot and MySql
+# Kotlin Restful Api
+Restful api (Backend) using Kotlin, Spring Boot and MySql
