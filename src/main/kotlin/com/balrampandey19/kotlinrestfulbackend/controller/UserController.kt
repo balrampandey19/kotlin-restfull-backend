@@ -27,4 +27,17 @@ class UserController(private val userRepository: UserRepository) {
         }.orElse(ResponseEntity.notFound().build())
     }
 
+
+    @PutMapping("/user/{id}")
+    fun updateUserById(@PathVariable(value = "id") articleId: Long,
+                       @Valid @RequestBody newData: User): ResponseEntity<User> {
+
+        return userRepository.findById(articleId).map { oldData ->
+            val updatedUSer: User = oldData
+                    .copy(name = newData.name, email = newData.email, password = newData.password)
+            ResponseEntity.ok().body(userRepository.save(updatedUSer))
+        }.orElse(ResponseEntity.notFound().build())
+
+    }
+
 }
