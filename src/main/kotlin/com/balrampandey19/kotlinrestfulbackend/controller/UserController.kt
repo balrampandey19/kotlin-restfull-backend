@@ -2,6 +2,7 @@ package com.balrampandey19.kotlinrestfulbackend.controller
 
 import com.balrampandey19.kotlinrestfulbackend.model.User
 import com.balrampandey19.kotlinrestfulbackend.repository.UserRepository
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
@@ -40,4 +41,14 @@ class UserController(private val userRepository: UserRepository) {
 
     }
 
+
+    @DeleteMapping("/user/{id}")
+    fun deleteUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<Void> {
+
+        return userRepository.findById(userId).map { article ->
+            userRepository.delete(article)
+            ResponseEntity<Void>(HttpStatus.OK)
+        }.orElse(ResponseEntity.notFound().build())
+
+    }
 }
